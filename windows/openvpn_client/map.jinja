@@ -1,0 +1,11 @@
+{% set vpnclient = salt['grains.filter_by']({
+    'windows': {
+      'installer_file': 'openvpn-install-2.4.0-I602.exe',
+      'installer_url': 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.0-I602.exe',
+      'installer_hash': 'd449434afd56f22272138a46b0953a7c900d258323f6179acafb459d30b0c8c2',
+      'cert_file': 'openvpn-cert-base64.cer',
+      'cert_hash': '6ff2bf8ee338640df2008d12e53cce9bca2da4b7003550f1fb3acf7773cddc73',
+      'service': 'OpenVPNServiceInteractive',
+    },
+}, grain='os', default='windows', merge=salt['pillar.get']('vpnclient:lookup')) %}
+
